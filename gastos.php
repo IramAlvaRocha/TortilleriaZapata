@@ -4,17 +4,18 @@
       <form class="row g-3" method="post" action="scripts/gastos_backend.php">
       <div class="border fs-3 text-center border border-primary" class="bg-primary">Registrar gastos</div>
           <div class="col-12 col-md-12 col-lg-6">
+            <label  class="form-label">Descripción</label>
+            <input type="text" class="form-control" name="descripcion" placeholder="Descripción del gasto" required>
+          </div>
+          <div class="col-12 col-md-12 col-lg-6">
             <label  class="form-label">Monto</label>
-            <input type="text" class="form-control" name="monto" id="nombre" placeholder="Motivo del gasto" required>
+            <input type="text" class="form-control" name="monto" id="nombre" placeholder="Monto de gasto" required>
           </div>
           <div class="col-12 col-md-12 col-lg-6"> 
             <label  class="form-label">Fecha</label>
             <input type="date" class="form-control" name="fecha" placeholder="Fecha del gasto" required>
           </div>
-          <div class="col-12 col-md-12 col-lg-6">
-            <label  class="form-label">Descripción</label>
-            <input type="text" class="form-control" name="descripcion" placeholder="Descripción del gasto" required>
-          </div>
+          
           <div class="col-12 col-md-12 col-lg-6">
                 <label class="form-label">Sucursal</label>
                 <select class="form-select" name="sucursal" id="sucursal" required>
@@ -61,7 +62,7 @@
                         <th scope="col">Fecha</th>
                         <th scope="col">Descripción</th>
                         <th scope="col">Monto</th>
-                        <th scope="col">Sucursal</th>
+                        <th scope="col">Sucursal (Colonia)</th>
                         <th scope="col">Gestión</th>
                         </tr>
                     </thead>

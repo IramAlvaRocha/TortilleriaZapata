@@ -6,7 +6,7 @@
 	$correoEmp=$_POST['correo'];
 	$direccionEmp=$_POST['direccion'];
 	$contrasenaEmp=$_POST['contrasena'];
-	$adminEmp=$_POST['admin'];
+	$adminEmp='Si';
 	$nacEmp=$_POST['nacimiento'];
 	$folioEmp=$_POST['folio'];
 	$sucursal=$_POST['sucursal'];

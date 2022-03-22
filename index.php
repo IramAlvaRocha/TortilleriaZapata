@@ -156,7 +156,7 @@
       <h2>[Registrate]</h2>
       <h4>Crea una cuenta y conoce la variedad de productos que tenemos para ti</h4>
     </div>
-    <form action="">
+    <form action="scripts/signup_backend.php" method="post">
           <div class="body-login">
       <div class="login-n">
         <label for="nombreReg">Nombre Completo</label>
@@ -166,7 +166,7 @@
         <label for="contraReg">Contraseña</label>
         <input type="password" name="contra" id="contra" placeholder="Ingrese una contraseña" class="correo">
         <label for="contraReg">Repite Contraseña</label>
-        <input type="password" name="contra" id="contra" placeholder="Confirmar contraseña" class="correo">
+        <input type="password" name="recontra" id="contra" placeholder="Confirmar contraseña" class="correo">
         <input type="submit" value="Registrarme">
       </div>
       <div class="login-s">

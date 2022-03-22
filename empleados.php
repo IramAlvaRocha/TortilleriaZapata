@@ -25,14 +25,14 @@
                 <label  class="form-label">Contraseña</label>
                 <input type="password" class="form-control" name="contrasena" id="contraseña" placeholder="Contraseña para el empleado" required>
               </div>
-              <div class="col-12 col-md-12 col-lg-6">
+              <!--<div class="col-12 col-md-12 col-lg-6">
                 <label class="form-label">¿El empleado será administrador?</label>
                 <select class="form-select" name="admin" id="admin" required>
                   <option selected>Selecciona una opción</option>
                   <option value="Si">Sí</option>
                   <option value="No">No</option>
                 </select>
-              </div>
+              </div>-->
               <div class="col-12 col-md-12 col-lg-6">
                 <label class="form-label">Fecha de nacimiento</label>
                 <input type="date" class="form-control" name="nacimiento" id="nacimiento" required>
@@ -67,7 +67,7 @@
 
     <?php
 
-      $consulta="SELECT * FROM empleado;";
+      $consulta="SELECT * FROM empleado WHERE admin_Empleado='Si';";
       $resultado=mysqli_query($conexion,$consulta);
       
     ?>
@@ -81,7 +81,6 @@
                         <th scope="col">#Folio</th>
                         <th scope="col">Nombre(s)</th>
                         <th scope="col">Correo Electronico</th>
-                        <th scope="col">Rol</th>
                         <th scope="col">Sucursal</th>
                         <th scope="col">Gestión</th>
                         </tr>
@@ -96,7 +95,6 @@
                         echo '<th scope="row">' . $lista['folio_Empleado'] . '</th>';
                         echo '<td>' . $lista['nombre_Empleado'] . '</td>';
                         echo '<td>' . $lista['correo_Empleado'] . '</td>';
-                        echo '<td>' . $lista['admin_Empleado'] . '</td>';
                         echo '<td>' . $lista['sucursal_empleado'] . '</td>';
                         echo '<td>
                           <a href="modificarempleados.php?user=' . $lista["folio_Empleado"] . '" class="btn btn-outline-warning"><span class="iconify" data-icon="clarity:note-edit-solid" data-width="15"></span></a>  

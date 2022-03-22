@@ -66,14 +66,14 @@ include("scripts/seguridad_nav.php");
                 <label  class="form-label">Contraseña</label>
                 <input type="password" class="form-control" name="contrasena" id="contraseña" placeholder="Contraseña para el empleado" required value="<?php echo $lista['contra']?>">
               </div>
-              <div class="col-12 col-md-12 col-lg-6">
+              <!--<div class="col-12 col-md-12 col-lg-6">
                 <label class="form-label">¿El empleado será administrador?</label>
                 <select class="form-select" name="admin" id="admin" required>
-                  <option selected><?php echo $lista['admin_Empleado']?></option>
+                  <option selected><?php// echo $lista['admin_Empleado']?></option>
                   <option value="Si">Sí</option>
                   <option value="No">No</option>
                 </select>
-              </div>
+              </div>-->
               <div class="col-12 col-md-12 col-lg-6">
                 <label class="form-label">Fecha de nacimiento</label>
                 <input type="date" class="form-control" name="nacimiento" id="nacimiento" required value="<?php echo $lista['fecha_nac_Empleado']?>">

@@ -61,8 +61,8 @@ include("scripts/seguridad_nav.php");
             <input type="date" class="form-control" name="fecha" placeholder="Fecha de la devolución" required value="<?php echo $lista['fecha_Devolucion']?>">
           </div>
           <div class="col-12 col-md-12 col-lg-6">
-            <label  class="form-label">Monto </label>
-            <input type="text" class="form-control" name="monto" id="correo" placeholder="Monto de la devolución" required value="<?php echo $lista['monto_Devolucion']?>">
+            <label  class="form-label">Unidades </label>
+            <input type="number" class="form-control" name="monto" id="correo" placeholder="Monto de la devolución" required value="<?php echo $lista['monto_Devolucion']?>">
           </div>
           <div class="col-12 col-md-12 col-lg-6">
             <label  class="form-label">Perdida</label>
@@ -71,7 +71,8 @@ include("scripts/seguridad_nav.php");
           <div class="col-12 col-md-12 col-lg-6">
                 <label class="form-label">Sucursal</label>
                 <select class="form-select" name="sucursal" id="sucursal" required>
-                  <option selected><?php echo $lista['sucursal_Devolucion']?></option>
+                  
+                  <option selected value="<?php echo $lista['ID_sucursal']?>"><?php echo $lista['sucursal_Devolucion']?></option>
                   <?php
                     $consulta1="SELECT * FROM sucursal;";
                     $resultado1=mysqli_query($conexion,$consulta1);

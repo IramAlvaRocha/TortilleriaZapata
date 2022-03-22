@@ -44,7 +44,7 @@
         }
 
     //iniciamos un string con la consulta suponiendo que hay sucursales seleccionadas
-    $select="Select * from empleado where ID_sucursal in (";
+    $select="Select * from empleado where admin_Empleado='Si' AND ID_sucursal in (";
     $where="";
     $i=1;
     $checks=0;
@@ -83,7 +83,7 @@
 
     //Si no hay ninguna sucursal seleccionada, brincamos a revisar si hay zonas seleccionadas
     if($where==""){
-        $select="Select * from empleado where ID_sucursal in (";
+        $select="Select * from empleado where admin_Empleado='Si' AND ID_sucursal in (";
         $where="";
         $i=1;
         $checks=0;
@@ -148,7 +148,7 @@
 
     //Si tambien estan vacias las casiilas de Zonas, verificamos si hay busqueda por estados
     if($where==""){
-        $select="Select * from empleado where ID_sucursal in (";
+        $select="Select * from empleado where admin_Empleado='Si' AND ID_sucursal in (";
         $where="";
         $i=1;
         $vueltas=0;
@@ -239,7 +239,7 @@
             $sql="Select * from gasto where MONTH(fecha_gasto)=$de_mes AND YEAR(fecha_gasto)=$de_ano ORDER BY ID_sucursal ASC; ";
             $sql2="Select * from gasto where MONTH(fecha_gasto)=$a_mes AND YEAR(fecha_gasto)=$a_ano ORDER BY ID_sucursal ASC; ";
         }else{*/
-            $sql="Select * from empleado ORDER BY ID_sucursal ASC;";
+            $sql="Select * from empleado WHERE admin_Empleado='Si' ORDER BY ID_sucursal ASC;";
             //$sql2="";
         //}
     }

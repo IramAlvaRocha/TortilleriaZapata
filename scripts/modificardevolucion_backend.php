@@ -14,7 +14,7 @@
 	$fila=mysqli_fetch_array($subresult,MYSQLI_ASSOC);
 	$nom_suc=$fila['nombre_sucursal'];
 
-	$consulta=("UPDATE `devolucion` SET `fecha_Devolucion`='$fecha',`motivo_Devolucion`='$motivo',`monto_Devolucion`='$monto',`perdida_Devolucion`='$perdida',`sucursal_Devolucion`='$nom_suc', `ID_sucursal`=$sucursal  WHERE `id_Devolucion`='$foliodev';");
+	$consulta=("UPDATE `devolucion` SET `fecha_Devolucion`='$fecha',`motivo_Devolucion`='$motivo',`monto_Devolucion`='$monto',`perdida_Devolucion`='$perdida',`sucursal_Devolucion`='$nom_suc', `ID_sucursal`='$sucursal'  WHERE `id_Devolucion`='$foliodev';");
  	$resultado= mysqli_query($conexion, $consulta);
 
  	if($resultado){

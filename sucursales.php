@@ -6,8 +6,8 @@
           <form class="row g-3" action="scripts/sucursales_backend.php" method="post">
           <span class="border fs-3 border border-primary text-center">Sucursales</span>
               <div class="col-12 col-lg-6">
-                <label  class="form-label">Nombre</label>
-                <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre de la sucursal" required>
+                <label  class="form-label">Nombre (Colonia)</label>
+                <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Ej. Zapata (Suc. Las Flores)" required>
               </div>
               <div class="col-12 col-md-12 col-lg-6">
                 <label  class="form-label">Teléfono</label>
@@ -70,9 +70,9 @@
                     <thead>
                         <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Sucursal</th>
+                        <th scope="col">Sucursal/Colonia</th>
                         <th scope="col">Encargado</th>
-                        <th scope="col">Zona</th>
+                        <th scope="col">Ciudad</th>
                         <th scope="col">Teléfono</th>
                         </tr>
                     </thead>
