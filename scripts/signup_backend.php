@@ -19,7 +19,7 @@ if($contra==$recontra){
     $consulta=("INSERT INTO `empleado` (`folio_Empleado`,`nombre_Empleado`, `correo_Empleado`, `contra`,`admin_Empleado`) values ('$folio','$nombre','$correo','$contra','No');");
     $resultado=mysqli_query($conexion,$consulta);
     if($resultado){
-        echo '<script>alert("Registro exitoso.");</script>';
+        echo '<script>alert("Registro exitoso. Tu nuevo folio de ingreso es: ' . $folio . '");</script>';
  	    echo '<script lenguage="javascript">window.location.href="../index.php#modal1";</script>';
     }else{
         echo '<script>alert("Error en el registro, volver a intentarlo.");</script>';

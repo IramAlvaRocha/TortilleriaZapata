@@ -27,9 +27,9 @@ $ifadmin=$registrodatos['admin_Empleado'];
             echo '<script lenguage="javascript">window.location.replace("../dashboard.php?user=' . $nombre . '");</script>'; 
             $_SESSION['empleado'] = $nombre; 
         }else{
-            $_SESSION['empleado'] = $nombre;
-            $_SESSION['nombreemp'] = $registrodatos['nombre_Empleado'];
-            echo '<script lenguage="javascript">window.location.replace("../puntodeventa.php?user=' . $nombre . '");</script>'; 
+            /*folio de usuario*/ $_SESSION['empleado'] = $nombre;
+            /*datos del usuario en array para PV*/ $_SESSION['nombreemp'] = $registrodatos['nombre_Empleado'];
+            echo '<script lenguage="javascript">window.location.replace("../ecommerce.php?user=' . $nombre . '");</script>'; 
         }
         
     }

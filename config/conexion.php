@@ -12,8 +12,8 @@ class Conectar{
     private $pdo;
 
     public function __construct(){
-        $this->host     = 'localhost';
-        $this->db       = 'TZapata';
+        $this->host     = 'localhost:33065';
+        $this->db       = 'zapatappdb';
         $this->user     = 'root';
         $this->password = "";
         $this->charset  = 'utf8mb4';
