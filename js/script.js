@@ -72,6 +72,14 @@ $(document).ready(function () {
     });
   });
 
+  $("#btn-rebajas").click(function (event) {
+    event.preventDefault();
+    $("#content").children().empty();
+    $.ajax("gestionRebajas.php").done(function (response) {
+      $("#content").html(response);
+    });
+  });
+
   //creacion de las cards
   $.ajax("JSON/productos.json", {
     dataType: "json",

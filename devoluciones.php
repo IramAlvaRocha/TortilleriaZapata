@@ -12,17 +12,17 @@
             <input type="date" class="form-control" name="fecha" placeholder="Fecha de la devolución" required>
           </div>
           <div class="col-12 col-md-12 col-lg-6">
-            <label  class="form-label">Unidades </label>
-            <input type="number" class="form-control" name="monto" id="correo" placeholder="Monto de la devolución" required>
-          </div>
+            <label  class="form-label">Folio de venta </label>
+            <input type="text" class="form-control" name="monto" id="folioVenta" placeholder="Folio de la venta" onkeyup="GetDetail(this.value)" required>
+         </div>
           <div class="col-12 col-md-12 col-lg-6">
-            <label  class="form-label">Perdida</label>
-            <input type="text" class="form-control" name="perdida" placeholder="Cantidad de dinero en perdidas" required>
+            <label  class="form-label">Monto</label>
+            <input type="text" class="form-control" name="perdida" id="monto" placeholder="Cantidad de dinero en perdidas" required onkeypress="return false;">
           </div>
           <div class="col-12 col-md-12 col-lg-6">
                 <label class="form-label">Sucursal</label>
                 <select class="form-select" name="sucursal" id="sucursal" required>
-                  <option selected>Seleccione una sucursal:</option>
+                  <option selected value=''>Seleccione una sucursal:</option>
                   <?php
                     include("scripts/conexion.php");
                     $conexion=conectar();
@@ -68,8 +68,8 @@
                         <tr>
                         <th scope="col">Fecha</th>
                         <th scope="col">Motivo</th>
-                        <th scope="col">Unidades</th>
-                        <th scope="col">Perdida</th>
+                        <th scope="col">Folio de venta</th>
+                        <th scope="col">Monto</th>
                         <th scope="col">Sucursal (Colonia)</th>
                         <th scope="col">Gestión</th>
                         </tr>
@@ -333,4 +333,25 @@
         };
     
     </script>
-    
+   <script>
+        function GetDetail(str){
+            if(str.length == 0){
+                document.getElementById('monto').value || defaultValue;
+                document.getElementById('sucursal').value || defaultValue;
+                return;
+            }else{
+                var xmlhttp=new XMLHttpRequest();
+                xmlhttp.onreadystatechange=function(){
+                    if(this.readyState==4 && this.status==200){
+                        var myObj=JSON.parse(this.responseText);
+                        document.getElementById("monto").value=myObj[0];
+                        document.getElementById("sucursal").value=myObj[1];
+                    }
+                }
+                xmlhttp.open("GET","scripts/buscarVenta.php?id="+str,true);
+                xmlhttp.send();
+            }
+        }
+
+        
+    </script>
