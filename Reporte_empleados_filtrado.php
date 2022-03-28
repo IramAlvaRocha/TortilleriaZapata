@@ -1,3 +1,4 @@
+
 <?php
     // connecting to database
     require('scripts/conexion.php');
@@ -9,7 +10,28 @@
 
     $resultado1=mysqli_query($conexion,$sql);
 ?>
-    <table>
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <title>Tortilleria Zapata</title>
+  </head>
+  <body style="background-color: #eee;">
+   <div class="container">
+    
+<div class="row mt-4 p-4">
+       <div class="col-12">
+         <h2 class="text-center">Reporte de datos filtrados</h2>
+       </div>
+       <div class="col-12">
+             <table class="table table-hover">
         <thead>
             <tr>
             <th><p>&nbsp&nbsp&nbsp&nbsp&nbsp</p></th>
@@ -126,3 +148,24 @@
                 echo'<p>Monto total en gastos: ' . $total;
     }*/
 ?>
+       </div>
+<div class="row mt-5 p-4">
+       <div class="col-12">
+         <nav class="nav nav-pills d-flex justify-content-around">
+           <a class="nav-link bg-primary text-light " href="dashboard.php">Regresar</a>
+           <a class="nav-link bg-success text-light " href="dashboard.php">Reporte PDF</a>
+           <a class="nav-link bg-danger text-light " aria-current="page" href="log_out.php">Cerrar sesión</a>
+        </nav>
+       </div>
+</div>
+     </div>
+   </div>
+  </body>
+</html>
+
+
+
+
+
+
+

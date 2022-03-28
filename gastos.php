@@ -89,7 +89,10 @@
         <div class="col-1"></div>
     </div>
     
-    <?php
+       <div class="row">
+      <div class="col-2"></div>
+      <div class="col-8">
+            <?php
             $consulta1="select * from estado order by nombre_estado asc;";
             $resultado=mysqli_query($conexion,$consulta1);
 
@@ -110,19 +113,20 @@
                 <option value="devolucion" >Devoluciones</option>
             </select>-->
 
-            Filtros:
-            <select id="tipo" onchange="funcion_filtros();">
+            <h4>Filtros:</h4>
+            <select class="form-select" id="tipo" onchange="funcion_filtros();">
                 <option value="0" selected="">Ninguna</option>
                 <option value="1" >Estados</option>
                 <option value="2" >Ciudades</option>
                 <option value="3" >Municipio (Sucursal)</option>
             </select>
+            <br>
             <div id="estados" style="display:none;">Selecciona estado(s):<br>
                 <?php
                     $contador_est=0;
                     while($lista1=mysqli_fetch_array($resultado, MYSQLI_ASSOC)){
                         $contador_est++;
-                        echo'<input type="checkbox" value="'.$lista1['ID_estado'].'" name="estado'.$contador_est.'" id="estado' . $lista1['ID_estado'] . '"><label>'.$lista1['nombre_estado'] . '</label><br>';
+                        echo'<input class="form-check-input" type="checkbox" value="'.$lista1['ID_estado'].'" name="estado'.$contador_est.'" id="estado' . $lista1['ID_estado'] . '"><label>'.$lista1['nombre_estado'] . '</label><br>';
                     }
                 ?>
                 <input type="text" name="contador_est" id="contador_est" hidden value="<?php echo $contador_est ?>">
@@ -152,13 +156,12 @@
                 <input type="text" name="contador_suc" id="contador_suc" hidden value="<?php echo $contador_suc ?>">
             </div>
 
-            <br><br>
             Evaluar fechas:
-            <input type="checkbox" id="btn_fechas" onclick="funcion_fechas();">
+            <input class="form-check-input" type="checkbox" id="btn_fechas" onclick="funcion_fechas();">
             <br><br>
             <div id="fechas" style="display:none;">
-                De:
-                <select name="de_mes" id="de_mes">
+                <h4>Desde:</h4>
+                <select class="form-select" name="de_mes" id="de_mes">
                     <option value="0" selected="">Seleccione mes:</option>
                     <option value="01">Enero</option>
                     <option value="02">Febrero</option>
@@ -172,8 +175,8 @@
                     <option value="10">Octubre</option>
                     <option value="11">Noviembre</option>
                     <option value="12">Diciembre</option>
-                </select>/
-                <select name="de_ano" id="de_ano">
+                </select> <br>
+                <select class="form-select" name="de_ano" id="de_ano">
                     <option value="0" selected="">Selecccione año:</option>                    
                     <?php
                         $cont2=1950;
@@ -184,9 +187,10 @@
                     ?>
                 </select>
             </div>
+            <hr>
             <div id="fechas2" style="display:none;">
-                Y:
-                <select name="a_mes" id="a_mes">
+                <h4>Hasta:</h4>
+                <select class="form-select" name="a_mes" id="a_mes">
                     <option value="0" selected="">Seleccione mes:</option>
                     <option value="01">Enero</option>
                     <option value="02">Febrero</option>
@@ -200,8 +204,8 @@
                     <option value="10">Octubre</option>
                     <option value="11">Noviembre</option>
                     <option value="12">Diciembre</option>
-                </select>/
-                <select name="a_ano" id="a_ano">
+                </select> <br>
+                <select class="form-select" name="a_ano" id="a_ano">
                     <option value="0" selected="">Selecccione año:</option>                    
                     <?php
                         $cont2=1950;
@@ -214,8 +218,14 @@
             </div>
             <!-- <div id="fecha_de">De:<input type="date" name="fecha_de"></div>
             <div id="fecha_hasta">Hasta:<input type="date" name="fecha_a"></div> -->
-            <input type="submit" name="generar">
+            <br>
+            <div class="col-12 text-center">
+              <input class="btn btn-success btn-md" type="submit" name="generar">
+            </div>
         </form>
+      </div>
+      <div class="col-2"></div>
+    </div>
 
     <script languaje="javascript">
         
@@ -324,5 +334,3 @@
         };
     
     </script>
-
-    

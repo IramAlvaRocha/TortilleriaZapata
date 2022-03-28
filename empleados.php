@@ -108,8 +108,8 @@
         </div>
         <div class="col-1"></div>
     </div>
-    
-    <?php
+
+        <?php
             $consulta1="select * from estado order by nombre_estado asc;";
             $resultado=mysqli_query($conexion,$consulta1);
 
@@ -120,9 +120,11 @@
             $resultado3=mysqli_query($conexion,$consulta3);
         ?>
 
-        
-
-        <form id="form_ventas" name="filtros" method="post" action="FR_empleados_back.php">
+        <br>
+<div class="row">
+  <div class="col-2"></div>
+  <div class="col-8">
+    <form id="form_ventas form-check" name="filtros" method="post" action="FR_empleados_back.php">
             <!--Tipo de reporte:
             <select id="tipo_reporte" name="tipo_reporte">
                 <option value="venta" selected="">Ventas</option>
@@ -130,19 +132,20 @@
                 <option value="devolucion" >Devoluciones</option>
             </select>-->
 
-            Filtros:
-            <select id="tipo" onchange="funcion_filtros();">
-                <option value="0" selected="">Ninguna</option>
+            <h4>Filtros: </h4>
+            <select class="form-select col"  id="tipo" onchange="funcion_filtros();">
+                <option value="0" selected="">Selecciona uno de los filtros</option>
                 <option value="1" >Estados</option>
                 <option value="2" >Ciudades</option>
                 <option value="3" >Municipio (Sucursal)</option>
             </select>
+            <br>
             <div id="estados" style="display:none;">Selecciona estado(s):<br>
                 <?php
                     $contador_est=0;
                     while($lista1=mysqli_fetch_array($resultado, MYSQLI_ASSOC)){
                         $contador_est++;
-                        echo'<input type="checkbox" value="'.$lista1['ID_estado'].'" name="estado'.$contador_est.'" id="estado' . $lista1['ID_estado'] . '"><label>'.$lista1['nombre_estado'] . '</label><br>';
+                        echo'<input class="form-check-input" type="checkbox" value="'.$lista1['ID_estado'].'" name="estado'.$contador_est.'" id="estado' . $lista1['ID_estado'] . '"><label class="form-check-label" >'.$lista1['nombre_estado'] . '</label><br>';
                     }
                 ?>
                 <input type="text" name="contador_est" id="contador_est" hidden value="<?php echo $contador_est ?>">
@@ -234,10 +237,14 @@
             </div>-->
             <!-- <div id="fecha_de">De:<input type="date" name="fecha_de"></div>
             <div id="fecha_hasta">Hasta:<input type="date" name="fecha_a"></div> -->
-            <input type="submit" name="generar">
+            <div class="col-12 text-center">
+              <input class="btn btn-success btn-md" type="submit" name="generar">
+            </div>
         </form>
-
-    <script languaje="javascript">
+  </div>
+  <div class="col-2"></div>
+</div>
+<script languaje="javascript">
         
                 /*$(document).ready(function(){
                 var $form = $('#filtros');

@@ -1,7 +1,7 @@
 <script src="../Chart.js"></script>
 <h1 style="font-family:sans-serif; margin-left:250px;">Devoluciones por sucursal</h1>
-		<div style="width: 50%">
-			<canvas id="canvas" height="450" width="600"></canvas>
+		<div style="width: 80%">
+			<canvas id="canvas" height="300" width="600"></canvas>
 		</div>
 
 
@@ -25,7 +25,7 @@
 		],
 		datasets : [
 			{
-				fillColor : "rgba(16, 30, 134 ,0.7)",
+				fillColor : "rgba(54, 132, 107 ,0.7)",
 				strokeColor : "rgba(220,220,220,0.8)",
 				highlightFill: "rgba(23, 25, 39,0.75)",
 				highlightStroke: "rgba(220,220,220,1)",

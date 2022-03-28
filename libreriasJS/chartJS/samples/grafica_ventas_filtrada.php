@@ -29,8 +29,8 @@ require('../../../scripts/conexion.php');
 ?>
 <script src="../Chart.js"></script>
 	<h1 style="font-family:sans-serif; margin-left:250px;">Ventas <?php echo $mes . $ano1;?> </h1>
-		<div style="width: 50%">
-			<canvas id="canvas" height="250" width="400"></canvas>
+		<div style="width: 100%">
+			<canvas id="canvas" height="200" width="400"></canvas>
 		</div>
 
 
@@ -54,7 +54,7 @@ require('../../../scripts/conexion.php');
 			],
 			datasets : [
 				{
-					fillColor : "rgba(16, 30, 134 ,0.7)",
+					fillColor : "rgba(54, 132, 107 ,0.9)",
 					strokeColor : "rgba(220,220,220,0.8)",
 					highlightFill: "rgba(23, 25, 39,0.75)",
 					highlightStroke: "rgba(220,220,220,1)",

@@ -98,7 +98,10 @@
         <div class="col-1"></div>
     </div>
     
-    <?php
+       <div class="row justify-content-center">
+      <div class="col-2"></div>
+      <div class="col-8 align-items-center">
+         <?php
             $consulta1="select * from estado order by nombre_estado asc;";
             $resultado=mysqli_query($conexion,$consulta1);
 
@@ -109,8 +112,7 @@
             $resultado3=mysqli_query($conexion,$consulta3);
         ?>
 
-        
-
+        <br>
         <form id="form_ventas" name="filtros" method="post" action="FR_devoluciones_back.php">
             <!--Tipo de reporte:
             <select id="tipo_reporte" name="tipo_reporte">
@@ -119,13 +121,14 @@
                 <option value="devolucion" >Devoluciones</option>
             </select>-->
 
-            Filtros:
-            <select id="tipo" onchange="funcion_filtros();">
-                <option value="0" selected="">Ninguna</option>
+            <h4>Filtros:</h4>
+            <select class="form-select" id="tipo" onchange="funcion_filtros();">
+                <option value="0" selected="">Seleccione un filtro</option>
                 <option value="1" >Estados</option>
                 <option value="2" >Ciudades</option>
                 <option value="3" >Municipio (Sucursal)</option>
             </select>
+            <br>
             <div id="estados" style="display:none;">Selecciona estado(s):<br>
                 <?php
                     $contador_est=0;
@@ -136,8 +139,6 @@
                 ?>
                 <input type="text" name="contador_est" id="contador_est" hidden value="<?php echo $contador_est ?>">
             </div>
-
-            <br><br>
             <div id="zonas" style="display:none;">Selecciona zona(s):<br>
                 <?php
                     $contador_zona=0;
@@ -155,7 +156,7 @@
                     $contador_suc=0;
                     while($lista3=mysqli_fetch_array($resultado3, MYSQLI_ASSOC)){
                         $contador_suc++;
-                        echo'<input type="checkbox" value="'.$lista3['ID_sucursal'].'" name="suc'.$contador_suc.'" id="suc' . $lista3['ID_sucursal'] . '"><label>'.$lista3['nombre_sucursal'] . '</label><br>';
+                        echo'<input class="form-check-input" type="checkbox" value="'.$lista3['ID_sucursal'].'" name="suc'.$contador_suc.'" id="suc' . $lista3['ID_sucursal'] . '"><label>'.$lista3['nombre_sucursal'] . '</label><br>';
                     }
                 ?>
                 <input type="text" name="contador_suc" id="contador_suc" hidden value="<?php echo $contador_suc ?>">
@@ -163,11 +164,11 @@
 
             <br><br>
             Evaluar fechas:
-            <input type="checkbox" id="btn_fechas" onclick="funcion_fechas();">
+            <input class="form-check-input" type="checkbox" id="btn_fechas" onclick="funcion_fechas();">
             <br><br>
             <div id="fechas" style="display:none;">
-                De:
-                <select name="de_mes" id="de_mes">
+                <h4>Desde:</h4>
+                <select class="form-select" name="de_mes" id="de_mes">
                     <option value="0" selected="">Seleccione mes:</option>
                     <option value="01">Enero</option>
                     <option value="02">Febrero</option>
@@ -181,8 +182,9 @@
                     <option value="10">Octubre</option>
                     <option value="11">Noviembre</option>
                     <option value="12">Diciembre</option>
-                </select>/
-                <select name="de_ano" id="de_ano">
+                </select>
+                <br>
+                <select class="form-select" name="de_ano" id="de_ano">
                     <option value="0" selected="">Selecccione año:</option>                    
                     <?php
                         $cont2=1950;
@@ -193,9 +195,10 @@
                     ?>
                 </select>
             </div>
+            <hr>
             <div id="fechas2" style="display:none;">
-                Y:
-                <select name="a_mes" id="a_mes">
+                <h4>Hasta</h4>
+                <select class="form-select name="a_mes" id="a_mes">
                     <option value="0" selected="">Seleccione mes:</option>
                     <option value="01">Enero</option>
                     <option value="02">Febrero</option>
@@ -209,8 +212,9 @@
                     <option value="10">Octubre</option>
                     <option value="11">Noviembre</option>
                     <option value="12">Diciembre</option>
-                </select>/
-                <select name="a_ano" id="a_ano">
+                </select>
+                <br>
+                <select class="form-select name="a_ano" id="a_ano">
                     <option value="0" selected="">Selecccione año:</option>                    
                     <?php
                         $cont2=1950;
@@ -223,9 +227,16 @@
             </div>
             <!-- <div id="fecha_de">De:<input type="date" name="fecha_de"></div>
             <div id="fecha_hasta">Hasta:<input type="date" name="fecha_a"></div> -->
-            <input type="submit" name="generar">
+            <br>
+            <div class="col-12 text-center">
+              <input class="btn btn-success btn-md" type="submit" name="generar">
+            </div>
         </form>
 
+      </div>
+      <div class="col-2"></div>
+    </div>
+   
     <script languaje="javascript">
         
                 /*$(document).ready(function(){
@@ -333,25 +344,4 @@
         };
     
     </script>
-   <script>
-        function GetDetail(str){
-            if(str.length == 0){
-                document.getElementById('monto').value || defaultValue;
-                document.getElementById('sucursal').value || defaultValue;
-                return;
-            }else{
-                var xmlhttp=new XMLHttpRequest();
-                xmlhttp.onreadystatechange=function(){
-                    if(this.readyState==4 && this.status==200){
-                        var myObj=JSON.parse(this.responseText);
-                        document.getElementById("monto").value=myObj[0];
-                        document.getElementById("sucursal").value=myObj[1];
-                    }
-                }
-                xmlhttp.open("GET","scripts/buscarVenta.php?id="+str,true);
-                xmlhttp.send();
-            }
-        }
-
-        
-    </script>
+    

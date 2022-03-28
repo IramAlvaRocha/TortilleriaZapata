@@ -39,9 +39,7 @@ require('../../../scripts/conexion.php');
 
 		var barChartData = {
 			labels : [
-					<?php 
-						
-						
+					<?php 					
 						$consulta="SELECT * FROM sucursal;";
 						$resultado=mysqli_query($conexion,$consulta);
 						while($lista=mysqli_fetch_array($resultado,MYSQLI_ASSOC)){

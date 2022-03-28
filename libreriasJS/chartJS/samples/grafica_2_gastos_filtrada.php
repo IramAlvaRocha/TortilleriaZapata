@@ -54,7 +54,7 @@ require('../../../scripts/conexion.php');
 			],
 			datasets : [
 				{
-					fillColor : "rgba(16, 30, 134 ,0.7)",
+					fillColor : "rgba(16, 30, 134 ,0.9)",
 					strokeColor : "rgba(220,220,220,0.8)",
 					highlightFill: "rgba(23, 25, 39,0.75)",
 					highlightStroke: "rgba(220,220,220,1)",

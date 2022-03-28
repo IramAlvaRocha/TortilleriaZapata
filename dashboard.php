@@ -43,7 +43,7 @@ include("scripts/seguridad_nav.php");
             <a href="" id="btn-empleado" class="d-block text-light p-3 menu-opc"> <span class="iconify mr-2 lead" data-icon="mdi:account-box" data-width="36" data-height="36"></span> Gestion de empleados</a>
             <a href="" id="btn-sucursales" class="d-block text-light p-3 menu-opc"> <span class="iconify" data-icon="mdi:office-building" data-width="36"></span> Gestion de sucursales</a>
             <a href="" id="btn-devoluciones" class="d-block text-light p-3 menu-opc"><span class="iconify mr-2 lead" data-icon="mdi:clipboard-arrow-left" data-width="36" data-height="36"></span> Gestion devoluciones</a>
-            <a href="" id="btn-rebajas" class="d-block text-light p-3 menu-opc"><span class="iconify mr-2 lead" data-icon="mdi:clipboard-arrow-left" data-width="36" data-height="36"></span> Gestion rebajas</a>
+            <a href="" id="btn-rebajas" class="d-block text-light p-3 menu-opc"><span class="iconify" data-icon="teenyicons:discount-solid" data-width="36" data-height="36"></span> Gestion rebajas</a>
             <a href="" id="btn-gastos" class="d-block text-light p-3 menu-opc"><span class="iconify mr-2 lead" data-icon="mdi:cash" data-width="36" data-height="36"></span> Gestion gastos</a>
             <a href="" id="btn-productos" class="d-block text-light p-3 menu-opc"><span class="iconify mr-2 lead" data-icon="mdi:basket-plus" data-width="36" data-height="36"></span> Gestion producto</a>
             <a href="" id="btn-ventas" class="d-block text-light p-3 menu-opc"><span class="iconify mr-2 lead" data-icon="mdi:point-of-sale" data-width="36" data-height="36"></span> Historial de ventas</a>
