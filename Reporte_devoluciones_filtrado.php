@@ -108,7 +108,7 @@
         <?php
             $contador=0;
             $total=0;
-            while($lista2=mysqli_fetch_array($resultado2,MYSQLI_ASSOC)){
+            while($lista2=mysqli_fetch_array($resultado2, MYSQLI_ASSOC)){
                 $id_suc=$lista2['ID_sucursal'];
                 $sub1="SELECT ID_zona from sucursal WHERE ID_sucursal=$id_suc;";
                 $subres1=mysqli_query($conexion,$sub1);

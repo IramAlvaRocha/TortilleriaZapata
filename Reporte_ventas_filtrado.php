@@ -153,10 +153,10 @@
     <div class="row mt-3">
     <div class="col-1"></div>
     <div class="col-10 p-3 border rounded shadow p-4 mb-5">
-      <embed src="libreriasJS/chartJS/samples/grafica_ventas_filtrada.php" type="application/pdf" width="100%" height="500px" />
+      <embed src="libreriasJS/chartJS/samples/grafica_ventas_filtrada.php" type="application/pdf" width="100%" height="540px" />
         <?php 
             if($sql2!="" && $sql2!=$sql){
-                echo '<embed src="libreriasJS/chartJS/samples/grafica_2_ventas_filtrada.php" type="application/       pdf" width="100%" height="500px" />
+                echo '<embed src="libreriasJS/chartJS/samples/grafica_2_ventas_filtrada.php" type="application/pdf" width="100%" height="540px" />
                 ';
             }
         ?>

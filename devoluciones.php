@@ -198,7 +198,7 @@
             <hr>
             <div id="fechas2" style="display:none;">
                 <h4>Hasta</h4>
-                <select class="form-select name="a_mes" id="a_mes">
+                <select class="form-select" name="a_mes" id="a_mes">
                     <option value="0" selected="">Seleccione mes:</option>
                     <option value="01">Enero</option>
                     <option value="02">Febrero</option>
@@ -214,7 +214,7 @@
                     <option value="12">Diciembre</option>
                 </select>
                 <br>
-                <select class="form-select name="a_ano" id="a_ano">
+                <select class="form-select" name="a_ano" id="a_ano">
                     <option value="0" selected="">Selecccione año:</option>                    
                     <?php
                         $cont2=1950;
