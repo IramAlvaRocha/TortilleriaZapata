@@ -27,22 +27,19 @@
 
   
     <nav class="navbar">
-        <a href="../index.php#home">Inicio</a>
-        <a href="../index.php#video">Procesos</a>
-        <a href="../index.php#about-us">Conocenos</a>
-        <a href="../index.php#contacto">Contacto</a>
+      <a href="#">Productos</a>
+      <a href="#"><i class="fa-solid fa-cart-shopping"></i> Carrito</a>
         <a href="#">Chatbot</a>
     </nav>
 
     <div class="icons">
       <i class="fas fa-bars" id="menu-bars"></i>
-      <a class="" href="login.php"><i class="fa fa-user-plus" aria-hidden="true"></i></i></a>
-      <a class="" href="login.php"><i class="fas fa-user-alt"></i></a>
+      <a class="" href="#modal2"><i class="fa fa-user-plus" aria-hidden="true"></i></i></a>
+      <a class="" href="#modal1"><i class="fas fa-user-alt"></i></a>
       
     </div>
 
 </header>
-
 <!-- header section ends-->
 
 <!-- Bot starts -->

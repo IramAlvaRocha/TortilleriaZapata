@@ -33,7 +33,7 @@
         <a href="#video">Procesos</a>
         <a href="#about-us">Conocenos</a>
         <a href="#contacto">Contacto</a>
-        <a href="view/chatbot.php">Chatbot</a>
+        <!-- <a href="view/chatbot.php">Chatbot</a> -->
     </nav>
 
     <div class="icons">
