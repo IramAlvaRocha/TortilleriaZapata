@@ -43,6 +43,8 @@ function Footer()
     $this->Ln(1.5);
     $this->Cell(0,10,'Folio de venta: 1204989842' ,0,0,'C');
     $this->Ln(1.5);
+    $this->Cell(0,10,'Para dudas o sugerencias, contactanos al: 8112998323' ,0,0,'C');
+    $this->Ln(1.7);
     $this->Cell(0,10,'Tortilleria Zapata. All Rights Reserved 2022.' ,0,0,'C');
     $this->Ln(1.5);
 }
@@ -61,13 +63,15 @@ $pdf->Cell(5,$textypos,"Tortilleria Zapata");
 $pdf->Ln(1);
 $pdf->SetFont('Arial','',5);
 $pdf->Ln(2);
-$pdf->Cell(30,$textypos,"Sucursal Los Angeles", 0,0,'C');
+$pdf->Cell(30,$textypos,"Sucursal Los Angeles,", 0,0,'C');
+$pdf->Ln(2);
+$pdf->Cell(30,$textypos,"San Nicolas de los Garza, CP. 66478", 0,0,'C');
 $pdf->Ln(2);
 $fecha = date('Y-m-d   H:i:s');
 $pdf->Cell(30,$textypos,"Fecha:" . $fecha, 0,0,'C');
 $pdf->SetFont('Arial','',5);    //Letra Arial, negrita (Bold), tam. 20
 $textypos+=6;
-$pdf->setY(7);
+$pdf->setY(8);
 $pdf->setX(2);
 $pdf->Cell(5,$textypos,'-------------------------------------------------------------------------');
 
