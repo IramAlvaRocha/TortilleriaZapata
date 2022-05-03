@@ -1,0 +1,43 @@
+.ecommerce {
+  margin-top: 5.8rem;
+  background: rgba(214, 132, 56, 0.85);
+  height: auto;
+}
+.home-ecommerce {
+  padding: 3rem 2rem;
+}
+
+.nombre {
+  font-size: 3.5rem;
+  font-weight: bold;
+}
+.info {
+  font-size: 2.5rem;
+}
+.home-ecommerce {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.img-user img {
+  max-width: 200px;
+  max-height: 200px;
+  margin-right: 4rem;
+  border-radius: 50%;
+  box-shadow: 3px 6px 42px 2px rgba(0, 0, 0, 0.31);
+  -webkit-box-shadow: 3px 6px 42px 2px rgba(0, 0, 0, 0.31);
+  -moz-box-shadow: 3px 6px 42px 2px rgba(0, 0, 0, 0.31);
+}
+
+.img-user img:hover {
+  background-color: rgba(0, 0, 0, 0.57);
+}
+
+.info-user {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-left: 2rem;
+}

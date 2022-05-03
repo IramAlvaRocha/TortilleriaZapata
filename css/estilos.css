@@ -199,7 +199,7 @@ section:nth-child(even) {
 
 .video {
   display: flex;
-  background: #d68438;
+  background: rgb(214, 132, 56);
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
