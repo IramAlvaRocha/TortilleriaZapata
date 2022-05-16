@@ -35,7 +35,7 @@
   
     <nav class="navbar">
       <a href="modificar-datos.php">Perfil</a>
-      <a href="#"><i class="fa-solid fa-cart-shopping"></i> Carrito</a>
+      <a href="view/catalogo_productos.php"><i class="fa-solid fa-cart-shopping"></i> Productos</a>
         <a href="view/chatbot.php">Chatbot</a>
     </nav>
 
