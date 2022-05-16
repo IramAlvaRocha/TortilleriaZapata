@@ -36,7 +36,7 @@
     <nav class="navbar">
       <a href="modificar-datos.php">Perfil</a>
       <a href="view/catalogo_productos.php"><i class="fa-solid fa-cart-shopping"></i> Productos</a>
-      <a class="nav-link" href="mostrarpedido.php">Pedido (<?php echo (empty($_SESSION['PEDIDO']))?0:count($_SESSION['PEDIDO']);?>) </a>
+      <a class="nav-link" href="view/mostrarpedido.php">Pedido (<?php echo (empty($_SESSION['PEDIDO']))?0:count($_SESSION['PEDIDO']);?>) </a>
         <a href="view/chatbot.php">Chatbot</a>
         <a id="btn_salir" href="log_out.php"><i class="fa-solid fa-cart-shopping"></i> Cerrar sesión</a>
     </nav>

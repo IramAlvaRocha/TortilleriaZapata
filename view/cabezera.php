@@ -32,11 +32,6 @@
       <a class="nav-link" href="catalogo_productos.php">Productos <span class="sr-only">(current)</span></a>
       <a class="nav-link" href="mostrarpedido.php">Pedido (<?php echo (empty($_SESSION['PEDIDO']))?0:count($_SESSION['PEDIDO']);?>) </a>
       <a href="../view/chatbot.php">Chatbot</a>
-      <a id="btn_salir" href="log_out.php"><i class="fa-solid fa-cart-shopping"></i> Cerrar sesión</a>
+      <a id="btn_salir" href="../log_out.php"><i class="fa-solid fa-cart-shopping"></i> Cerrar sesión</a>
     </nav>
 </header>
-
-
-
-
-  <div class="container">

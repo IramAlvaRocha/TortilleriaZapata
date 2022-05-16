@@ -6,30 +6,13 @@ include '../config/conexion_e.php';
 ?>
 
 <br>
+<div style="height: 100vh;" class="container">
 
-<!--Consulta de sucursales para la lista -->
-<?php
-$sentencia=$pdo->prepare("SELECT * FROM sucursal");
-$sentencia->execute();
-$listaSucursales=$sentencia->fetchALL(PDO::FETCH_ASSOC);
-// print_r($listaSucursales);
-?>
-
-        <h3>Seleeción de Sucursal</h3>
-        <!-- Foreach para generar select con sucursales -->
-        <select class="custom-select">
-        <option selected>Seleccione una Sucursal</option>
-        <?php foreach($listaSucursales as $sucursal){?>
-        <option value="<?php echo $sucursal['ID_sucursal']?>"><?php echo $sucursal['nombre_sucursal']?></option>
-        <?php } ?>
-        </select>
-
-
-<h3>Lista de Productos en el Pedido</h3>
+<h4 style="text-align:center;font-size: 3rem;padding:2rem 2rem">Carrito de compras </h4>
 
 <?php if(!empty ($_SESSION['PEDIDO'])){?>
 
-<table class="table table-light table-bordered">
+<table style="height: 100vh; font-size:2rem" class="table table-light table-bordered">
 
     <tbody>
 
@@ -81,22 +64,44 @@ $listaSucursales=$sentencia->fetchALL(PDO::FETCH_ASSOC);
         <?php }?>
        
 
-        <tr>
-            <td colspan="3" align="right"><h3>Total</h3></td>
-            <td align="right"><h3><?php echo number_format($total,2)?></h3></td>
+        <tr style="height: auto;">
+            <td colspan="3" align="right"><h3  style="text-align:center;font-size: 2rem;padding:2rem ">Total</h3></td>
+            <td align="right"><h3 style="text-align:center;font-size: 2rem;padding:2rem 2rem"><?php echo number_format($total,2)?></h3></td>
             <td></td>
         </tr>
-
-            
 
         <tr>
             <td colspan="5">
 
                 <form action="pagar.php" method="post">
+                        <!--Consulta de sucursales para la lista -->
+                        <?php
+                        $sentencia=$pdo->prepare("SELECT * FROM sucursal");
+                        $sentencia->execute();
+                        $listaSucursales=$sentencia->fetchALL(PDO::FETCH_ASSOC);
+                        // print_r($listaSucursales);
+                        ?>      
+
+                                <?php $cliente = $_SESSION['user'];?>
+                                <!-- Foreach para generar select con sucursales -->
+                                <select style="height:4rem;font-size:2rem" class="custom-select" name="selectsuc">
+                                <option selected>Selecione una Sucursal</option>
+                                <?php foreach($listaSucursales as $sucursal){?>
+
+                                <option value="<?php echo $sucursal['ID_sucursal']?>"><?php echo $sucursal['nombre_sucursal']?></option>
+
+
+
+                                <?php } ?>
+                                </select>
+
+<br><br>
+
                     <div class="alert alert-success">
                         <div class="form-group">
                             <label for="my-input">Correo de Contacto</label>
                             <input id="email" 
+                            style="font-size:1.3rem;"
                             name="email" 
                             class="form-control" 
                             type="email" 
@@ -107,18 +112,18 @@ $listaSucursales=$sentencia->fetchALL(PDO::FETCH_ASSOC);
                         <small id="emailHelp" class="form-text text-muted" >
                         El Pedido se Enviara a Este Correo
                         </small>
-
                     </div>
+
+                    
+
+                    <input type="hidden" name="cliente" value="<?php echo $cliente; ?>">
+
                         <button class="btn btn-primary btn-lg btn-block" 
                           type="submit" 
                           value="proceder" 
                           name="btnAccion">
                             Realizar Pago-->>
                         </button>
-
-
-
-
 
                 </form>
             
@@ -135,9 +140,14 @@ $listaSucursales=$sentencia->fetchALL(PDO::FETCH_ASSOC);
 
 
 <?php }else{?>
-    <div class="alert alert-success">
-        Aun No Agrega Productos al Pedido
+
+  <div style="height: 80vh; padding:2rem 5rem;" class="section-prod">
+    <div style="font-size:2.2rem; " class="alert alert-warning">
+        Parece que no hay productos en el carrito de compra
     </div>
+  </div>
+    
     <?php }?>
 
+</div>
 <?php include 'piedepagina.php'; ?>

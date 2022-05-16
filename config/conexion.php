@@ -13,7 +13,7 @@ class Conectar{
 
     public function __construct(){
         $this->host     = 'localhost';
-        $this->db       = 'zapatappd';
+        $this->db       = 'tzapata';
         $this->user     = 'root';
         $this->password = "";
         $this->charset  = 'utf8mb4';

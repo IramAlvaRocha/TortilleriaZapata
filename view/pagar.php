@@ -25,9 +25,9 @@ if ($_POST) {
     $sentencia->bindParam(":Total",$total);    
     $sentencia->execute();
     $idVenta=$pdo->lastInsertId();
+    $_SESSION['folioventa'] = $idVenta;
 
     foreach($_SESSION['PEDIDO'] as $indice=>$productoped){
-
 
         $sentencia=$pdo->prepare("INSERT INTO 
         `detventas` (`folio_detventa`, `folio_venta`, `folioprod_detventa`, `precioprod_detventa`, `cantidad_detventa`) 
@@ -38,13 +38,11 @@ if ($_POST) {
     $sentencia->bindParam(":PRECIO",$productoped['PRECIO']);   
     $sentencia->bindParam(":CANTIDAD",$productoped['CANTIDAD']);   
     $sentencia->execute();
-
     }
-   // echo "<h3>".$total."</h3>";
 }
+
+
 ?>
-
-
 
 <div class="jumbotron text-center">
     <h1 class="display-4">¡Finalizar Pedido!</h1>
@@ -57,6 +55,12 @@ if ($_POST) {
 
    
 <script src="https://www.paypalobjects.com/api/checkout.js"></script>
+
+
+<?php $sucnombre = $_POST['selectsuc'];?>
+
+<?php $clientepagar = $_POST['cliente'];?>
+
 
 <script>
 
@@ -77,9 +81,7 @@ if ($_POST) {
       shape: 'pill',
     },
 
-
     commit: true,
-
 
     payment: function(data, actions) {
       return actions.payment.create({
@@ -95,9 +97,13 @@ if ($_POST) {
     onAuthorize: function(data, actions) {
       return actions.payment.execute().then(function() {
         
-        //window.alert('Muchas Gracias por su Compra!');
+       
         console.log(data);
-        window.location = "verificador.php?paymentToken="+data.paymentToken+"&paymentID="+data.paymentID;
+        window.alert('Muchas Gracias por su Compra!');
+        window.location = "../ecommerce.php";
+        window.open("../Ticket.php?folioventa="+<?php echo $idVenta; ?>+"&sucursal="+<?php echo $sucnombre;?>+"&cliente="+<?php echo $clientepagar;?>);
+
+       //window.location = "verificador.php?paymentToken="+data.paymentToken+"&paymentID="+data.paymentID;
       });
     }
   }, '#paypal-button');
@@ -105,15 +111,5 @@ if ($_POST) {
 </script>
 
 </div>
-
-    
-
-    
-
-
-
-
-
-
 
 <?php include 'piedepagina.php'; ?>
