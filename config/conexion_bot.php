@@ -4,8 +4,8 @@ function conectar()
 {
     $user="root";
     $pass="";
-    $server="localhost:33065";
-    $db="zapatappdb_2";
+    $server="localhost";
+    $db="zapatappdb";
     $conexion=mysqli_connect($server, $user, $pass, $db) or die ("Error de conexion a la BD" . mysqli_connect_error());
     return $conexion;
 }
