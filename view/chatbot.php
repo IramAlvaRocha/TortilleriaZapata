@@ -1,3 +1,9 @@
+<?php
+    session_start();
+    echo $_SESSION['empleado'];
+    
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,17 +33,13 @@
 
   
     <nav class="navbar">
-      <a href="#">Productos</a>
-      <a href="#"><i class="fa-solid fa-cart-shopping"></i> Carrito</a>
-        <a href="#">Chatbot</a>
+      <a href="../ecommerce.php">Inicio</a>
+      <a href="../modificar-datos.php">Perfil</a>
+      <a href="catalogo_productos.php"><i class="fa-solid fa-cart-shopping"></i> Productos</a>
+      <a class="nav-link" href="mostrarpedido.php">Pedido (<?php echo (empty($_SESSION['PEDIDO']))?0:count($_SESSION['PEDIDO']);?>) </a>
+      <a id="btn_salir" href="log_out.php"><i class="fa-solid fa-cart-shopping"></i> Cerrar sesión</a>
     </nav>
 
-    <div class="icons">
-      <i class="fas fa-bars" id="menu-bars"></i>
-      <a class="" href="#modal2"><i class="fa fa-user-plus" aria-hidden="true"></i></i></a>
-      <a class="" href="#modal1"><i class="fas fa-user-alt"></i></a>
-      
-    </div>
 
 </header>
 <!-- header section ends-->
