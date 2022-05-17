@@ -7,33 +7,9 @@ require('scripts/conexion.php');
 
 $conexion = conectar();
 
-if(!isset($_SESSION['empleado']))
-{
-    echo '<script language="javascript">alert("PRIMERO DEBE INICIAR SESIÓN");</script>';
-    echo '<script lenguage="javascript">window.location.replace("login.php");</script>';
-}
-$sucursal= $_GET['sucursal'];
-$zona= $_GET['zona'];
-$consultazona= "SELECT * FROM sucursal WHERE zona_sucursal='$zona' AND nombre_sucursal='$sucursal'";
-$consultadazona= mysqli_query($conexion, $consultazona);
-$numfilas1 = mysqli_num_rows($consultadazona);
-if($numfilas1<1)
-{
-    echo '<script language="javascript">alert("Zona o sucursal equivocada, favor de intentar nuevamente");</script>';
-    echo '<script lenguage="javascript">window.location.replace("reportes.php");</script>';
-}
-$consulta = "SELECT * FROM venta WHERE sucursal_venta='$sucursal'";
-$consultada = mysqli_query($conexion, $consulta);
-$resultados = mysqli_fetch_array($consultada);
-$numfilas = mysqli_num_rows($consultada);
-if($numfilas<1)
-{
-    echo '<script language="javascript">alert("NO HAY DATOS PARA MOSTRAR");</script>';
-    echo '<script lenguage="javascript">window.location.replace("reportes.php");</script>';
-}
-$filasxd=$numfilas-2;
-$i=0;
-$total=0;
+$sql=$_GET['sql'];
+$sql2=$_GET['sql2'];
+
 class PDF extends FPDF
 {
 // Cabecera de página
@@ -46,8 +22,8 @@ function Header()
     // Movernos a la derecha
     date_default_timezone_set("America/Monterrey");
     $fecha = date('Y-m-d   H:i:s');
-    $sucursal= $_GET['sucursal'];
-    $zona= $_GET['zona'];
+    //$sucursal= $_GET['sucursal'];
+    //$zona= $_GET['zona'];
     $this->Cell(80);
     // Título
     $this->Cell(30,10,'Reporte de ventas Zapatapp',0,1,'C');
@@ -55,7 +31,7 @@ function Header()
     $this->Ln(20);
     $this->Cell(180,-25,$fecha,0,1,'C');
     $this->Ln(10);
-    $this->Cell(180,25,"Sucursal " . $sucursal,0,1,'C');
+    //$this->Cell(180,25,"Sucursal " . $sucursal,0,1,'C');
 
 
 }
@@ -75,15 +51,61 @@ function Footer()
 // Creación del objeto de la clase heredada
 $pdf = new PDF();
 $pdf->AliasNbPages();
-$pdf->AddPage();
+$pdf->AddPage('portrait', array(250,250));
 $pdf->SetFont('Times','',12);
 $pdf->SetY(50);
-$pdf->Cell(20,10,'Folio', 1,0,'C');
-$pdf->Cell(50,10,'Folio vendedor', 1,0,'C');
-$pdf->Cell(70,10,'Fecha Venta', 1,0,'C');
-$pdf->Cell(45,10,'Total venta', 1,0,'C');
+$pdf->Cell(10,10,'No.', 1,0,'C');
+$pdf->Cell(15,10,'Folio venta', 1,0,'C');
+$pdf->Cell(40,10,'Empleado', 1,0,'C');
+$pdf->Cell(40,10,'Sucursal', 1,0,'C');
+$pdf->Cell(28,10,'Fecha', 1,0,'C');
+$pdf->Cell(20,10,'Total', 1,0,'C');
+$pdf->Cell(50,10,'Localidad', 1,0,'C');
 
-for($i=0;$i<=$filasxd;$i++)
+$resultado1=mysqli_query($conexion,$sql);
+$contador=0;
+    $total=0;
+    while($lista1=mysqli_fetch_array($resultado1,MYSQLI_ASSOC)){
+        $id_suc=$lista1['ID_sucursal'];
+        $sub1="SELECT ID_zona from sucursal WHERE ID_sucursal=$id_suc;";
+        $subres1=mysqli_query($conexion,$sub1);
+        $arreglo1=mysqli_fetch_array($subres1,MYSQLI_ASSOC);
+        $idzona=$arreglo1['ID_zona'];
+        
+        $sub2="SELECT * from zona WHERE ID_zona=$idzona;";
+        $subres2=mysqli_query($conexion,$sub2);
+        $arreglo2=mysqli_fetch_array($subres2,MYSQLI_ASSOC);
+        $nomzona=$arreglo2['nombre_zona'];
+        $idEstado=$arreglo2['ID_estado'];
+
+        $sub3="SELECT * from estado WHERE ID_estado=$idEstado;";
+        $subres3=mysqli_query($conexion,$sub3);
+        $arreglo3=mysqli_fetch_array($subres3,MYSQLI_ASSOC);
+        $nomEstado=$arreglo3['nombre_estado'];
+
+        $idEmpleado=$lista1['folio_EmpleadoFK'];
+        $sub4="SELECT * from empleado WHERE folio_Empleado=$idEmpleado;";
+        $subres4=mysqli_query($conexion,$sub4);
+        $arreglo4=mysqli_fetch_array($subres4,MYSQLI_ASSOC);
+        $nomEmpleado=$arreglo4['nombre_Empleado'];
+
+        $contador++;
+        $pdf->Ln(20);
+        $pdf->Cell(20,10,$contador, 1,0,'C');
+        $pdf->Cell(20,10,$lista1['id_Venta'], 1,0,'C');
+        $pdf->Cell(50,10,$lista1['ID_sucursal'] . ' ' . $lista1['sucursal_venta'], 1,0,'C');
+        $pdf->Cell(50,10,$lista1['folio_EmpleadoFK'] . " " . $nomEmpleado , 1,0,'C');
+        $pdf->Cell(70,10,$lista1['fecha_Venta'], 1,0,'C');
+        $pdf->Cell(45,10,$lista1['total_Venta'], 1,0,'C');
+        $pdf->Cell(45,10,$nomzona . ', ' . $nomEstado, 1,0,'C');
+        $total+=$lista1['total_Venta'];
+    }
+    $pdf->Ln(20);
+$pdf->SetFont('Times','',20);
+$pdf->Cell(0,20, 'Total de venta bruto:$ ' . $total, 0,1,'C');
+$pdf->Output();
+ob_end_flush();
+/* for($i=0;$i<=$filasxd;$i++)
 {
     $pdf->Ln(20);
     $pdf->Cell(20,20, $resultados['id_Venta'], 1,0,'C');
@@ -120,10 +142,6 @@ for($i=0;$i<=$resultados;$i++)
     {
         $pdf->Ln(50);
     }*/
-}
-$pdf->Ln(20);
-$pdf->SetFont('Times','',20);
-$pdf->Cell(0,20, 'Total de venta bruto:$ ' . $total, 0,1,'C');
-$pdf->Output();
-ob_end_flush();
+
+
 ?>

@@ -167,7 +167,7 @@
        <div class="col-12">
          <nav class="nav nav-pills d-flex justify-content-around">
            <a class="nav-link bg-primary text-light " href="dashboard.php">Regresar</a>
-           <a class="nav-link bg-success text-light " href="dashboard.php">Reporte PDF</a>
+           <a class="nav-link bg-success text-light " href="reportes_ventas.php?sql=<?php echo $sql;?>&sql2=<?php echo $sql2;?>">Reporte PDF</a>
            <a class="nav-link bg-danger text-light " aria-current="page" href="log_out.php">Cerrar sesión</a>
         </nav>
        </div>

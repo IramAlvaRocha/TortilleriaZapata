@@ -67,7 +67,7 @@ include("scripts/seguridad_nav.php");
               <p class="fs-3">Revisa la última información</p>
             </div>
             <div class="col-lg-3">
-              <a href="reportes.php" class="m-2  btn btn-primary w-100 align-self-center">Descargar reportes</a>
+              <!--<a href="reportes.php" class="m-2  btn btn-primary w-100 align-self-center">Descargar reportes</a>-->
               <br>
               <a href="https://github.com/IramAlvaRocha/Proyecto_ZapataWeb/archive/refs/heads/master.zip" class="m-2 btn btn-primary w-100 align-self-center">Archivos fuentes</a>
             </div>

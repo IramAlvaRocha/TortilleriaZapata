@@ -1,7 +1,12 @@
 <?php
+include("scripts/conexion.php");
+  $conexion=conectar();
     session_start();
-    echo $_SESSION['empleado'];
-    
+    echo $_SESSION['user'];
+    $folioEmp=$_SESSION['user'];
+    $consulta="SELECT * FROM `empleado` WHERE folio_Empleado='$folioEmp';";
+      $resultado=mysqli_query($conexion,$consulta);
+    $lista=mysqli_fetch_array($resultado, MYSQLI_ASSOC);
 ?>
 
 <!DOCTYPE html>
@@ -38,7 +43,7 @@
       <a href="view/catalogo_productos.php"><i class="fa-solid fa-cart-shopping"></i> Productos</a>
       <a class="nav-link" href="view/mostrarpedido.php">Pedido (<?php echo (empty($_SESSION['PEDIDO']))?0:count($_SESSION['PEDIDO']);?>) </a>
       <a href="view/chatbot.php">Chatbot</a>
-      <a id="btn_salir" href="log_out.php"><i class="fa-solid fa-cart-shopping"></i> Cerrar sesión</a>
+      <a id="btn_salir" href="../log_out.php"><i class="fa-solid fa-cart-shopping"></i> Cerrar sesión</a>
     </nav>
 
 
@@ -49,17 +54,17 @@
 <section class="datos">
   <div class="container-datos">
       <p class="titulo">Modifica tus datos personales</p>
-      <form class="form-modificar" action="scripts/signup_backend.php" method="post">
+      <form class="form-modificar" action="scripts/updateclient_backend.php" method="post">
         <div class="body-login">
         <div class="login-n">
           <label class="bold" for="nombreReg">Nombre Completo</label>
-          <input type="text" name="nombre" id="nombre" placeholder="Ingrese su nombre completo">
+          <input type="text" name="nombre" id="nombre" placeholder="Ingrese su nombre completo" value="<?php echo $lista['nombre_Empleado'];?>">
           <label class="bold" for="correoReg">Correo Electrónico</label>
-          <input type="text" name="correo" id="correo" placeholder="Ingrese un correo electronico" class="correo">
+          <input type="text" name="correo" id="correo" placeholder="Ingrese un correo electronico" class="correo" value="<?php echo $lista['correo_Empleado'];?>">
          <label class="bold" for="contraReg">Contraseña</label>
-          <input type="password" name="contra" id="contra" placeholder="Ingrese una contraseña" class="correo">
+          <input type="password" name="contra" id="contra" placeholder="Ingrese una contraseña" class="correo" value="<?php echo $lista['contra'];?>">
           <label class="bold" for="contraReg">Repite Contraseña</label>
-          <input type="password" name="recontra" id="contra" placeholder="Confirmar contraseña" class="correo">
+          <input type="password" name="recontra" id="contra" placeholder="Confirmar contraseña" class="correo" value="<?php echo $lista['contra'];?>">
           <input type="submit" value="Guardar Cambios">
          </div>
         </div>

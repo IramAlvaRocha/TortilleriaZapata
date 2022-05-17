@@ -72,4 +72,7 @@
         </div>
         <div class="col-1"></div>
     </div>
+    <div class="col-lg-3">
+      <a href="reportes_productos.php" target="_blank" class="m-2  btn btn-primary w-100 align-self-center">Descargar reportes</a>
+       </div>
     
