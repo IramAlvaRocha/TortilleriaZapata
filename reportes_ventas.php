@@ -16,7 +16,7 @@ class PDF extends FPDF
 function Header()
 {
     // Logo
-    $this->Image('logo.png',10,8,33);
+    $this->Image('logo.png',30,8,33);
     // Arial bold 15
     $this->SetFont('Arial','B',18);
     // Movernos a la derecha
@@ -26,10 +26,10 @@ function Header()
     //$zona= $_GET['zona'];
     $this->Cell(80);
     // Título
-    $this->Cell(30,10,'Reporte de ventas Zapatapp',0,1,'C');
+    $this->Cell(80,10,'Reporte de ventas Zapatapp',0,1,'C');
     // Salto de línea
     $this->Ln(20);
-    $this->Cell(180,-25,$fecha,0,1,'C');
+    $this->Cell(240,-25,$fecha,0,1,'C');
     $this->Ln(10);
     //$this->Cell(180,25,"Sucursal " . $sucursal,0,1,'C');
 
@@ -51,16 +51,16 @@ function Footer()
 // Creación del objeto de la clase heredada
 $pdf = new PDF();
 $pdf->AliasNbPages();
-$pdf->AddPage('portrait', array(250,250));
+$pdf->AddPage('portrait', array(250,300));
 $pdf->SetFont('Times','',12);
 $pdf->SetY(50);
 $pdf->Cell(10,10,'No.', 1,0,'C');
-$pdf->Cell(15,10,'Folio venta', 1,0,'C');
-$pdf->Cell(40,10,'Empleado', 1,0,'C');
-$pdf->Cell(40,10,'Sucursal', 1,0,'C');
-$pdf->Cell(28,10,'Fecha', 1,0,'C');
-$pdf->Cell(20,10,'Total', 1,0,'C');
-$pdf->Cell(50,10,'Localidad', 1,0,'C');
+$pdf->Cell(20,10,'Folio venta', 1,0,'C');
+$pdf->Cell(45,10,'Sucursal', 1,0,'C');
+$pdf->Cell(56,10,'Empleado', 1,0,'C');
+$pdf->Cell(26,10,'Fecha', 1,0,'C');
+$pdf->Cell(19,10,'Total', 1,0,'C');
+$pdf->Cell(56,10,'Localidad', 1,0,'C');
 
 $resultado1=mysqli_query($conexion,$sql);
 $contador=0;
@@ -90,19 +90,83 @@ $contador=0;
         $nomEmpleado=$arreglo4['nombre_Empleado'];
 
         $contador++;
-        $pdf->Ln(20);
-        $pdf->Cell(20,10,$contador, 1,0,'C');
+        $pdf->Ln(10);
+        $pdf->Cell(10,10,$contador, 1,0,'C');
         $pdf->Cell(20,10,$lista1['id_Venta'], 1,0,'C');
-        $pdf->Cell(50,10,$lista1['ID_sucursal'] . ' ' . $lista1['sucursal_venta'], 1,0,'C');
-        $pdf->Cell(50,10,$lista1['folio_EmpleadoFK'] . " " . $nomEmpleado , 1,0,'C');
-        $pdf->Cell(70,10,$lista1['fecha_Venta'], 1,0,'C');
-        $pdf->Cell(45,10,$lista1['total_Venta'], 1,0,'C');
-        $pdf->Cell(45,10,$nomzona . ', ' . $nomEstado, 1,0,'C');
+        $pdf->SetFont('Times','',10);
+        $pdf->Cell(45,10,$lista1['ID_sucursal'] . ' ' . $lista1['sucursal_venta'], 1,0,'C');
+        $pdf->Cell(56,10,$lista1['folio_EmpleadoFK'] . " " . $nomEmpleado , 1,0,'C');
+        $pdf->SetFont('Times','',12);
+        $pdf->Cell(26,10,$lista1['fecha_Venta'], 1,0,'C');
+        $pdf->Cell(19,10,$lista1['total_Venta'], 1,0,'C');
+        $pdf->SetFont('Times','',10);
+        $pdf->Cell(56,10,$nomzona . ', ' . $nomEstado, 1,0,'C');
+        $pdf->SetFont('Times','',12);
         $total+=$lista1['total_Venta'];
     }
     $pdf->Ln(20);
 $pdf->SetFont('Times','',20);
 $pdf->Cell(0,20, 'Total de venta bruto:$ ' . $total, 0,1,'C');
+
+if($sql2!="" && $sql2!=$sql){
+    $pdf->AddPage('portrait', array(250,300));
+$pdf->SetFont('Times','',12);
+    $resultado2=mysqli_query($conexion,$sql2);
+    $pdf->SetY(50);
+    $pdf->Cell(10,10,'No.', 1,0,'C');
+    $pdf->Cell(20,10,'Folio venta', 1,0,'C');
+    $pdf->Cell(45,10,'Sucursal', 1,0,'C');
+    $pdf->Cell(56,10,'Empleado', 1,0,'C');
+    $pdf->Cell(26,10,'Fecha', 1,0,'C');
+    $pdf->Cell(19,10,'Total', 1,0,'C');
+    $pdf->Cell(56,10,'Localidad', 1,0,'C');
+
+    $contador=0;
+            $total=0;
+            while($lista2=mysqli_fetch_array($resultado2,MYSQLI_ASSOC)){
+                $id_suc=$lista2['ID_sucursal'];
+                $sub1="SELECT ID_zona from sucursal WHERE ID_sucursal=$id_suc;";
+                $subres1=mysqli_query($conexion,$sub1);
+                $arreglo1=mysqli_fetch_array($subres1,MYSQLI_ASSOC);
+                $idzona=$arreglo1['ID_zona'];
+                
+                $sub2="SELECT * from zona WHERE ID_zona=$idzona;";
+                $subres2=mysqli_query($conexion,$sub2);
+                $arreglo2=mysqli_fetch_array($subres2,MYSQLI_ASSOC);
+                $nomzona=$arreglo2['nombre_zona'];
+                $idEstado=$arreglo2['ID_estado'];
+        
+                $sub3="SELECT * from estado WHERE ID_estado=$idEstado;";
+                $subres3=mysqli_query($conexion,$sub3);
+                $arreglo3=mysqli_fetch_array($subres3,MYSQLI_ASSOC);
+                $nomEstado=$arreglo3['nombre_estado'];
+        
+                $idEmpleado=$lista2['folio_EmpleadoFK'];
+                $sub4="SELECT * from empleado WHERE folio_Empleado=$idEmpleado;";
+                $subres4=mysqli_query($conexion,$sub4);
+                $arreglo4=mysqli_fetch_array($subres4,MYSQLI_ASSOC);
+                $nomEmpleado=$arreglo4['nombre_Empleado'];
+        
+                $contador++;
+                $pdf->Ln(10);
+                $pdf->Cell(10,10,$contador, 1,0,'C');
+                $pdf->Cell(20,10,$lista2['id_Venta'], 1,0,'C');
+                $pdf->SetFont('Times','',10);
+                $pdf->Cell(45,10,$lista2['ID_sucursal'] . ' ' . $lista2['sucursal_venta'], 1,0,'C');
+                $pdf->Cell(56,10,$lista2['folio_EmpleadoFK'] . " " . $nomEmpleado , 1,0,'C');
+                $pdf->SetFont('Times','',12);
+                $pdf->Cell(26,10,$lista2['fecha_Venta'], 1,0,'C');
+                $pdf->Cell(19,10,$lista2['total_Venta'], 1,0,'C');
+                $pdf->SetFont('Times','',10);
+                $pdf->Cell(56,10,$nomzona . ', ' . $nomEstado, 1,0,'C');
+                $pdf->SetFont('Times','',12);
+                $total+=$lista2['total_Venta'];
+            }
+            $pdf->Ln(20);
+$pdf->SetFont('Times','',20);
+$pdf->Cell(0,20, 'Total de venta bruto:$ ' . $total, 0,1,'C');
+}
+
 $pdf->Output();
 ob_end_flush();
 /* for($i=0;$i<=$filasxd;$i++)

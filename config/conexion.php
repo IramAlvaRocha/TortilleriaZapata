@@ -12,7 +12,7 @@ class Conectar{
     private $pdo;
 
     public function __construct(){
-        $this->host     = 'localhost:33065';
+        $this->host     = 'localhost';
         $this->db       = 'zapatappdb_2';
         $this->user     = 'root';
         $this->password = "";
