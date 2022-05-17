@@ -36,7 +36,7 @@ include 'cabezera.php';
           title="<?php echo $producto['nombre_Producto']?>" 
           alt="<?php echo $producto['nombre_Producto']?>" 
           class="img-fluid card-img-top" 
-          src="../public/img/imgprod/<?php echo $producto['imagen_Producto']?>"
+          src="../public/imgprod/<?php echo $producto['imagen_Producto']?>"
           data-toggle="popover"
           data-trigger="hover"
           data-content="<?php echo $producto['descripcion_Producto']?>"
